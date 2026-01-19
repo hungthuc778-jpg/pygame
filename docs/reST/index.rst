@@ -1,213 +1,170 @@
-Pygame Front Page
-=================
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :hidden:
-
-   ref/*
-   tut/*
-   tut/en/**/*
-   tut/ko/**/*
-   c_api
-   filepaths
-   logos
-
-Quick start
------------
-
-Welcome to pygame! Once you've got pygame installed (:code:`pip install pygame` or
-:code:`pip3 install pygame` for most people), the next question is how to get a game
-loop running. Pygame, unlike some other libraries, gives you full control of program
-execution. That freedom means it is easy to mess up in your initial steps.
-
-Here is a good example of a basic setup (opens the window, updates the screen, and handles events)--
-
-.. literalinclude:: ref/code_examples/base_script.py
-
-Here is a slightly more fleshed out example, which shows you how to move something
-(a circle in this case) around on screen--
-
-.. literalinclude:: ref/code_examples/base_script_example.py
-
-For more in depth reference, check out the :ref:`tutorials-reference-label`
-section below, check out a video tutorial (`I'm a fan of this one
-<https://www.youtube.com/watch?v=AY9MnQ4x3zk>`_), or reference the API
-documentation by module.
-
-Documents
----------
-
-`Readme`_
-  Basic information about pygame: what it is, who is involved, and where to find it.
-
-`Install`_
-  Steps needed to compile pygame on several platforms.
-  Also help on finding and installing prebuilt binaries for your system.
-
-:doc:`filepaths`
-  How pygame handles file system paths.
-
-:doc:`Pygame Logos <logos>`
-   The logos of Pygame in different resolutions.
-
-
-`LGPL License`_
-  This is the license pygame is distributed under.
-  It provides for pygame to be distributed with open source and commercial software.
-  Generally, if pygame is not changed, it can be used with any type of program.
-
-.. _tutorials-reference-label:
-
-Tutorials
----------
-
-:doc:`Introduction to Pygame <tut/PygameIntro>`
-  An introduction to the basics of pygame.
-  This is written for users of Python and appeared in volume two of the Py magazine.
-
-:doc:`Import and Initialize <tut/ImportInit>`
-  The beginning steps on importing and initializing pygame.
-  The pygame package is made of several modules.
-  Some modules are not included on all platforms.
-
-:doc:`How do I move an Image? <tut/MoveIt>`
-  A basic tutorial that covers the concepts behind 2D computer animation.
-  Information about drawing and clearing objects to make them appear animated.
-
-:doc:`Chimp Tutorial, Line by Line <tut/ChimpLineByLine>`
-  The pygame examples include a simple program with an interactive fist and a chimpanzee.
-  This was inspired by the annoying flash banner of the early 2000s.
-  This tutorial examines every line of code used in the example.
-
-:doc:`Sprite Module Introduction <tut/SpriteIntro>`
-  Pygame includes a higher level sprite module to help organize games.
-  The sprite module includes several classes that help manage details found in almost all games types.
-  The Sprite classes are a bit more advanced than the regular pygame modules,
-  and need more understanding to be properly used.
-
-:doc:`Surfarray Introduction <tut/SurfarrayIntro>`
-  Pygame used the NumPy python module to allow efficient per pixel effects on images.
-  Using the surface arrays is an advanced feature that allows custom effects and filters.
-  This also examines some of the simple effects from the pygame example, arraydemo.py.
-
-:doc:`Camera Module Introduction <tut/CameraIntro>`
-  Pygame, as of 1.9, has a camera module that allows you to capture images,
-  watch live streams, and do some basic computer vision.
-  This tutorial covers those use cases.
-
-:doc:`Newbie Guide <tut/newbieguide>`
-  A list of thirteen helpful tips for people to get comfortable using pygame.
-
-:doc:`Making Games Tutorial <tut/MakeGames>`
-  A large tutorial that covers the bigger topics needed to create an entire game.
-
-:doc:`Display Modes <tut/DisplayModes>`
-  Getting a display surface for the screen.
-
-:doc:`한국어 튜토리얼 (Korean Tutorial) <tut/ko/빨간블록 검은블록/개요>`
-  빨간블록 검은블록
-
-
-Reference
----------
-
-:ref:`genindex`
-  A list of all functions, classes, and methods in the pygame package.
-
-:doc:`ref/bufferproxy`
-  An array protocol view of surface pixels
-
-:doc:`ref/color`
-  Color representation.
-
-:doc:`ref/cursors`
-  Loading and compiling cursor images.
-
-:doc:`ref/display`
-  Configure the display surface.
-
-:doc:`ref/draw`
-  Drawing simple shapes like lines and ellipses to surfaces.
-
-:doc:`ref/event`
-  Manage the incoming events from various input devices and the windowing platform.
-
-:doc:`ref/examples`
-  Various programs demonstrating the use of individual pygame modules.
-
-:doc:`ref/font`
-  Loading and rendering TrueType fonts.
-
-:doc:`ref/freetype`
-  Enhanced pygame module for loading and rendering font faces.
-
-:doc:`ref/gfxdraw`
-  Anti-aliasing draw functions.
-
-:doc:`ref/image`
-  Loading, saving, and transferring of surfaces.
-
-:doc:`ref/joystick`
-  Manage the joystick devices.
-
-:doc:`ref/key`
-  Manage the keyboard device.
-
-:doc:`ref/locals`
-  Pygame constants.
-
-:doc:`ref/mixer`
-  Load and play sounds
-
-:doc:`ref/mouse`
-  Manage the mouse device and display.
-
-:doc:`ref/music`
-  Play streaming music tracks.
-
-:doc:`ref/pygame`
-  Top level functions to manage pygame.
-
-:doc:`ref/pixelarray`
-  Manipulate image pixel data.
-
-:doc:`ref/rect`
-  Flexible container for a rectangle.
-
-:doc:`ref/scrap`
-  Native clipboard access.
-
-:doc:`ref/sndarray`
-  Manipulate sound sample data.
-
-:doc:`ref/sprite`
-  Higher level objects to represent game images.
-
-:doc:`ref/surface`
-  Objects for images and the screen.
-
-:doc:`ref/surfarray`
-  Manipulate image pixel data.
-
-:doc:`ref/tests`
-  Test pygame.
-
-:doc:`ref/time`
-  Manage timing and framerate.
-
-:doc:`ref/transform`
-  Resize and move images.
-
-:doc:`pygame C API <c_api>`
-  The C api shared amongst pygame extension modules.
-
-:ref:`search`
-  Search pygame documents by keyword.
-
-.. _Readme: ../wiki/about
-
-.. _Install: ../wiki/GettingStarted#Pygame%20Installation
-
-.. _LGPL License: LGPL.txt
+# Game bắn súng đơn giản - Pygame
+# Chạy được trên Python có cài pygame (pip install pygame)
+
+import pygame
+import random
+import math
+
+# Khởi tạo pygame
+pygame.init()
+
+# Cài đặt màn hình
+WIDTH = 800
+HEIGHT = 600
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Game Bắn Súng Siêu Đơn Giản")
+
+clock = pygame.time.Clock()
+FPS = 60
+
+# Màu sắc
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (220, 20, 60)
+BLUE = (0, 120, 255)
+YELLOW = (255, 215, 0)
+
+# Font
+font = pygame.font.SysFont("Arial", 36, bold=True)
+small_font = pygame.font.SysFont("Arial", 24)
+
+# Lớp Player (người chơi)
+class Player(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface((50, 50), pygame.SRCALPHA)
+        pygame.draw.circle(self.image, BLUE, (25, 25), 25)
+        pygame.draw.polygon(self.image, YELLOW, [(25, 10), (40, 25), (25, 40)])
+        self.rect = self.image.get_rect(center=(WIDTH//2, HEIGHT//2))
+        self.speed = 5
+
+    def update(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a] or keys[pygame.K_LEFT]:
+            self.rect.x -= self.speed
+        if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
+            self.rect.x += self.speed
+        if keys[pygame.K_w] or keys[pygame.K_UP]:
+            self.rect.y -= self.speed
+        if keys[pygame.K_s] or keys[pygame.K_DOWN]:
+            self.rect.y += self.speed
+
+        # Giới hạn không ra ngoài màn hình
+        self.rect.clamp_ip(screen.get_rect())
+
+# Lớp Đạn
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self, x, y, direction):
+        super().__init__()
+        self.image = pygame.Surface((12, 12), pygame.SRCALPHA)
+        pygame.draw.circle(self.image, YELLOW, (6, 6), 6)
+        self.rect = self.image.get_rect(center=(x, y))
+        self.speed = 12
+        self.vel_x = math.cos(math.radians(direction)) * self.speed
+        self.vel_y = -math.sin(math.radians(direction)) * self.speed  # góc 0 là bên phải
+
+    def update(self):
+        self.rect.x += self.vel_x
+        self.rect.y += self.vel_y
+        if not screen.get_rect().colliderect(self.rect):
+            self.kill()
+
+# Lớp Enemy (kẻ địch)
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface((40, 40), pygame.SRCALPHA)
+        pygame.draw.circle(self.image, RED, (20, 20), 20)
+        self.rect = self.image.get_rect(center=(random.randint(50, WIDTH-50), random.randint(-100, -40)))
+        self.speed = random.uniform(1.8, 3.2)
+
+    def update(self):
+        # Di chuyển xuống dưới
+        self.rect.y += self.speed
+        if self.rect.top > HEIGHT + 20:
+            self.kill()
+
+# Nhóm sprite
+all_sprites = pygame.sprite.Group()
+bullets = pygame.sprite.Group()
+enemies = pygame.sprite.Group()
+
+player = Player()
+all_sprites.add(player)
+
+# Biến game
+score = 0
+running = True
+shoot_cooldown = 0
+spawn_timer = 0
+
+print("Điều khiển:")
+print("  WASD / mũi tên → di chuyển")
+print("  Chuột trái → bắn")
+print("  Nhấn ESC hoặc đóng cửa sổ → thoát\n")
+
+while running:
+    dt = clock.tick(FPS)
+    # ---------------- EVENT ----------------
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+
+    # Bắn khi giữ chuột trái
+    mouse_pressed = pygame.mouse.get_pressed()
+    if mouse_pressed[0] and shoot_cooldown <= 0:
+        # Tính góc từ player đến chuột
+        mx, my = pygame.mouse.get_pos()
+        dx = mx - player.rect.centerx
+        dy = my - player.rect.centery
+        angle = math.degrees(math.atan2(-dy, dx))   # góc theo hệ độ
+
+        bullet = Bullet(player.rect.centerx, player.rect.centery, angle)
+        all_sprites.add(bullet)
+        bullets.add(bullet)
+        shoot_cooldown = 12   # frames cooldown (~0.2 giây)
+
+    if shoot_cooldown > 0:
+        shoot_cooldown -= 1
+
+    # Sinh enemy
+    spawn_timer += 1
+    if spawn_timer > 45:   # khoảng 0.75 giây sinh 1 con
+        enemy = Enemy()
+        all_sprites.add(enemy)
+        enemies.add(enemy)
+        spawn_timer = random.randint(-15, 10)  # tạo chút ngẫu nhiên
+
+    # ---------------- UPDATE ----------------
+    all_sprites.update()
+
+    # Va chạm đạn - enemy
+    hits = pygame.sprite.groupcollide(enemies, bullets, True, True)
+    for hit in hits:
+        score += 10
+
+    # Va chạm player - enemy → game over
+    if pygame.sprite.spritecollideany(player, enemies):
+        running = False
+        print(f"\nGAME OVER!   Điểm của bạn: {score}\n")
+
+    # ---------------- DRAW ----------------
+    screen.fill(BLACK)
+
+    all_sprites.draw(screen)
+
+    # Hiển thị điểm
+    score_text = font.render(f"SCORE: {score}", True, WHITE)
+    screen.blit(score_text, (20, 15))
+
+    # Hướng dẫn nhỏ
+    tip = small_font.render("Chuột trái = bắn   WASD = di chuyển", True, (180,180,180))
+    screen.blit(tip, (WIDTH - tip.get_width() - 20, HEIGHT - 40))
+
+    pygame.display.flip()
+
+pygame.quit()
+print("Cảm ơn bạn đã chơi!")
